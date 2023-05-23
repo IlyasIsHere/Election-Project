@@ -1,0 +1,115 @@
+.register-card {
+    z-index: 2;
+    color: black;
+    border: solid;
+    backdrop-filter: blur(10px);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25pt;
+    width: 60vh;
+    padding: 20px 40px;
+    padding-top: 0px;
+    border-color: #5b30d2;
+    padding-bottom: 0px;
+    background-color: lavender;
+
+    box-shadow: 1px 0px 68px 6px rgba(0,0,0,0.74);
+    -webkit-box-shadow: 1px 0px 68px 6px rgba(0,0,0,0.74);
+    -moz-box-shadow: 1px 0px 68px 6px rgba(0,0,0,0.74);
+}
+
+label {
+    box-sizing: border-box;
+    width: 40%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    box-sizing: border-box;
+    font-size: 20pt;
+    padding: 10px;
+    width: 60%;
+    background-color: rgba(164, 70, 255, 0.2);
+    color: black;
+    border: solid;
+    border-radius: 15px;
+
+}
+
+input[type="submit"] {
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 25pt;
+    flex-basis: 100%;
+    background-color: rgba(134, 160, 255, 0.3);
+    color: white;
+    background-color: #5b30d2;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+input[type="submit"]:hover {
+    background-color: #341588;
+    color: #818181;
+}
+
+.form-row {
+    display: flex;
+    column-gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.create-acc {
+    font-size: 15pt;
+}
+
+a {
+    color: #5b30d2;
+}
+
+input[type="text"]:hover, input[type="password"]:hover, input[type="email"]:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: 0.3s;
+    color: black;
+}
+
+input[type="submit"]:hover {
+    background-color: #341588;
+    color: rgba(255, 255, 255, 0.68);
+    transition: 0.2s;
+}
+
+.signin {
+    font-size: 15pt;
+}
+
+a {
+    color: #5b30d2;
+    background-color: rgba(255, 255, 255, 0.52);
+    backdrop-filter: blur(8px);
+    text-decoration: none;
+    padding: 5px;
+}
+
+a:hover {
+    color: blue;
+}
+
+.info-success {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    font-size: 16pt;
+    width: 25vw;
+    text-align: center;
+    margin: auto;
+}
