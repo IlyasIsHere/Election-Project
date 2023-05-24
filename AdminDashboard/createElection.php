@@ -17,7 +17,9 @@ require_once '../Include/adminSession.php';
 </head>
 <body>
 
-    <form action="" method="POST" class="container mt-5">
+
+    <form action="" method="POST" class="container mt-5" id="form">
+        <h1>Create a new election</h1>
         <div class="mb-3">
             <label for="input1" class="form-label">Election Title</label>
             <input required type="text" class="form-control" id="input1" name="title">
@@ -35,24 +37,30 @@ require_once '../Include/adminSession.php';
             <input required type="date" class="form-control" id="input4" name="enddate">
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="alert alert-danger" id="alert" style="display: none;">Start Date should be earlier than End Date!</div>
+        <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+
     </form>
 
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $stmt = $pdo->prepare("INSERT INTO elections (title, description, start_date, end_date) VALUES (?, ?, ?, ?)");
-        $title = $_POST["title"];
-        $description = $_POST["description"];
-        $startDate = $_POST["startdate"];
-        $endDate = $_POST["enddate"];
 
-        $success = $stmt->execute([$title, $description, $startDate, $endDate]);
+    <script src="../Include/dateValidation.js"></script>
 
-        if ($success) {
-            header("Location: adminDashboard.php?success_create=true");
-            exit();
-        }
-    }
-    ?>
 </body>
 </html>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $stmt = $pdo->prepare("INSERT INTO elections (title, description, start_date, end_date) VALUES (?, ?, ?, ?)");
+    $title = $_POST["title"];
+    $description = $_POST["description"];
+    $startDate = $_POST["startdate"];
+    $endDate = $_POST["enddate"];
+
+    $success = $stmt->execute([$title, $description, $startDate, $endDate]);
+
+    if ($success) {
+        header("Location: adminDashboard.php?success_create=true");
+        exit();
+    }
+}
+?>

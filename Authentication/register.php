@@ -37,6 +37,7 @@ if (isset($_POST['register'])) {
             $_SESSION['USER_ID'] = $user_id;
             $_SESSION['USER_EMAIL'] = $email;
             $_SESSION['is_admin'] = false;
+            $_SESSION['USERNAME'] = $username;
 
             header('Location: ../Dashboard/dashboard.php');
             exit();

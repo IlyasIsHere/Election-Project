@@ -28,6 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             $_SESSION["USER_ID"] = $user_row["user_id"];
             $_SESSION["USER_EMAIL"] = $user_row["email"];
             $_SESSION["is_admin"] = $user_row["is_admin"];
+            $_SESSION['USERNAME'] = $user_row["username"];
+
             header('location: ../index.php');
             exit();
         }

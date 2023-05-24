@@ -17,19 +17,7 @@ require_once '../Include/adminSession.php';
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-primary text-white">
-
-        <div class="container-fluid">
-            <h1>Elections (Admin)</h1>
-            <!-- Links -->
-            <ul class="navbar-nav gap-3">
-                <li class="nav-item bg-secondary">
-                    <a class="nav-link text-white" href="../Authentication/logout.php">Logout</a>
-                </li>
-            </ul>
-        </div>
-
-    </nav>
+    <?php include '../Include/adminNavbar.php'; ?>
 
     <div class="container mt-5">
         <?php if (isset($_GET['success_edit'])) { ?>
@@ -42,7 +30,7 @@ require_once '../Include/adminSession.php';
             <div class="alert alert-success">Election created successfully</div>
         <?php } ?>
 
-        <a href="createElection.php" class="btn btn-primary">Create a new election</a>
+        <a href="createElection.php" class="btn btn-primary mb-2">Create a new election</a>
         <table class="table table-bordered table-striped">
             <tr>
                 <th>Title</th>
@@ -62,6 +50,7 @@ require_once '../Include/adminSession.php';
                 $election_description = $row['description'];
                 $election_startdate = $row['start_date'];
                 $election_enddate = $row['end_date'];
+
 
                 echo "<tr>";
                 echo "<td>$election_title</td>";

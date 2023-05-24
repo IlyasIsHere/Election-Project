@@ -20,10 +20,12 @@ CREATE TABLE elections (
 );
 
 CREATE TABLE candidates (
-  candidate_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  candidate_id INTEGER,
   election_id INTEGER,
   name VARCHAR(50),
   photo VARCHAR(255),
+  is_approved BOOLEAN,
+  PRIMARY KEY (candidate_id, election_id),
   FOREIGN KEY (election_id) REFERENCES elections(election_id)
 );
 

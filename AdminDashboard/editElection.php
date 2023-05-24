@@ -32,7 +32,7 @@ if ($stmt->rowCount() != 0) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form action="" method="POST" class="container mt-5">
+    <form action="" method="POST" class="container mt-5" id="form">
         <div class="mb-3">
             <label for="input1" class="form-label">Election Title</label>
             <input required type="text" class="form-control" id="input1" name="title" value="<?php echo $election_title; ?>">
@@ -50,15 +50,24 @@ if ($stmt->rowCount() != 0) {
             <input required type="date" class="form-control" id="input4" name="enddate" value="<?php echo $election_enddate; ?>">
         </div>
 
+        <div class="alert alert-danger" id="alert" style="display: none;">Start Date should be earlier than End Date!</div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+    <script src="../Include/dateValidation.js"></script>
 </body>
 </html>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt2 = $pdo->prepare("UPDATE elections SET title = ?, description = ?, start_date = ?, end_date = ? WHERE election_id = ?");
-    $success = $stmt2->execute([$election_title, $election_description, $election_startdate, $election_enddate, $election_id]);
+
+    $title = $_POST["title"];
+    $description = $_POST["description"];
+    $startDate = $_POST["startdate"];
+    $endDate = $_POST["enddate"];
+
+    $success = $stmt2->execute([$title, $description, $startDate, $endDate, $election_id]);
 
 
     if ($success) {
