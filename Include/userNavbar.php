@@ -4,6 +4,9 @@
         <h1>Elections (User)</h1>
         <!-- Links -->
         <ul class="navbar-nav gap-3">
+            <li class="nav-item bg-white">
+                <a class="nav-link" href="report.php">Votes Report</a>
+            </li>
             <li class="nav-item bg-secondary">
                 <a class="nav-link text-white" href="../Authentication/logout.php">Logout</a>
             </li>

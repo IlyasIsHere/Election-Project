@@ -24,15 +24,18 @@ require_once '../Include/userSession.php';
             $election_id = $election['election_id'];
             $election_name = $election['title'];
             echo "<h3>$election_name</h3>";
-            echo "<table><tr><th>Candidate Name</th><th>Number of Votes</th></tr>";
-            $stmt2 = $pdo->prepare("SELECT vote, COUNT(*) as cnt FROM votes INNER JOIN candidates ON vote = candidate_id WHERE election_id = $election_id GROUP BY vote");
+            echo "<table class='table table-bordered table-striped'><tr><th>Candidate Name</th><th>Number of Votes</th></tr>";
+            $stmt2 = $pdo->prepare("SELECT name, COUNT(*) as cnt FROM votes V INNER JOIN candidates C ON vote = candidate_id WHERE V.election_id = $election_id GROUP BY vote");
 
             $stmt2->execute();
             while ($row = $stmt2->fetch(PDO::FETCH_ASSOC)) {
-                $name = $row['vote'];
+                $name = $row['name'];
                 $count = $row['cnt'];
 
-
+                echo "<tr>";
+                echo "<td>$name</td>";
+                echo "<td>$count</td>";
+                echo "</tr>";
             }
             echo "</table>";
         }
